@@ -19,22 +19,11 @@ namespace Gestion_M
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitializeFormSize();
+
         }
 
-        private void InitializeFormSize()
-        {
-            
-            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            
-            this.Size = new System.Drawing.Size(screenWidth / 2, screenHeight / 2);
 
-            
-            this.StartPosition = FormStartPosition.CenterScreen;
-        }
-       
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
@@ -65,5 +54,12 @@ namespace Gestion_M
         {
 
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            AjouterClient fr = new AjouterClient();
+            fr.ShowDialog();
+        }
+
     }
 }
