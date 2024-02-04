@@ -22,6 +22,12 @@ namespace Gestion_M
 
         }
 
+        //private void AffNotification(string type , string Message)
+        //{
+        //    ToastForm Tost = new ToastForm(type, Message);
+        //    Tost.Show();
+        //}
+        
 
 
 

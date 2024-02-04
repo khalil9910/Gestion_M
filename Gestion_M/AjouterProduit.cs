@@ -21,5 +21,15 @@ namespace Gestion_M
         {
             this.Close();
         }
+
+        private void AjouterProduit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
