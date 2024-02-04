@@ -46,7 +46,7 @@ namespace Gestion_M
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2DataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,11 +110,11 @@ namespace Gestion_M
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2TabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.guna2TabControl1.ItemSize = new System.Drawing.Size(180, 40);
-            this.guna2TabControl1.Location = new System.Drawing.Point(0, 3);
-            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.guna2TabControl1.Location = new System.Drawing.Point(0, 5);
+            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1172, 676);
+            this.guna2TabControl1.Size = new System.Drawing.Size(1758, 1039);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -141,12 +141,13 @@ namespace Gestion_M
             this.tabPage1.Controls.Add(this.tableLayoutPanel3);
             this.tabPage1.Controls.Add(this.guna2Button1);
             this.tabPage1.Controls.Add(this.guna2TextBox1);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.label);
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1164, 628);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1750, 991);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Gestion des Client";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -161,11 +162,12 @@ namespace Gestion_M
             this.tableLayoutPanel3.Controls.Add(this.guna2Button3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.guna2Button4, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.guna2Button2, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(651, 37);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(976, 57);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(471, 37);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(706, 57);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // guna2Button3
@@ -182,9 +184,10 @@ namespace Gestion_M
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
             this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.Location = new System.Drawing.Point(3, 3);
+            this.guna2Button3.Location = new System.Drawing.Point(4, 5);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(151, 31);
+            this.guna2Button3.Size = new System.Drawing.Size(227, 47);
             this.guna2Button3.TabIndex = 7;
             this.guna2Button3.Text = " Ajouter";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -202,9 +205,10 @@ namespace Gestion_M
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
             this.guna2Button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button4.Location = new System.Drawing.Point(317, 3);
+            this.guna2Button4.Location = new System.Drawing.Point(474, 5);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(151, 31);
+            this.guna2Button4.Size = new System.Drawing.Size(228, 47);
             this.guna2Button4.TabIndex = 8;
             this.guna2Button4.Text = "Modifier";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
@@ -223,9 +227,10 @@ namespace Gestion_M
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
             this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.Location = new System.Drawing.Point(160, 3);
+            this.guna2Button2.Location = new System.Drawing.Point(239, 5);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(151, 31);
+            this.guna2Button2.Size = new System.Drawing.Size(227, 47);
             this.guna2Button2.TabIndex = 6;
             this.guna2Button2.Text = "Supprimer";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -244,10 +249,10 @@ namespace Gestion_M
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.Location = new System.Drawing.Point(470, 40);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.guna2Button1.Location = new System.Drawing.Point(705, 62);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(52, 32);
+            this.guna2Button1.Size = new System.Drawing.Size(78, 49);
             this.guna2Button1.TabIndex = 5;
             // 
             // guna2TextBox1
@@ -265,25 +270,26 @@ namespace Gestion_M
             this.guna2TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Empty;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(175, 38);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 0, 5);
+            this.guna2TextBox1.Location = new System.Drawing.Point(263, 59);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(6, 8, 0, 8);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(347, 34);
+            this.guna2TextBox1.Size = new System.Drawing.Size(520, 52);
             this.guna2TextBox1.TabIndex = 3;
             this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
-            // label1
+            // label
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1.Location = new System.Drawing.Point(119, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 14);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Nom :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label.Location = new System.Drawing.Point(119, 62);
+            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(74, 22);
+            this.label.TabIndex = 4;
+            this.label.Text = "Nom ";
+            this.label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -293,11 +299,12 @@ namespace Gestion_M
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.guna2DataGridView2, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(-4, 95);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(-6, 146);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1172, 533);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1758, 819);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // guna2DataGridView2
@@ -332,7 +339,8 @@ namespace Gestion_M
             this.guna2DataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2DataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2DataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.guna2DataGridView2.Location = new System.Drawing.Point(4, 5);
+            this.guna2DataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2DataGridView2.Name = "guna2DataGridView2";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -344,7 +352,7 @@ namespace Gestion_M
             this.guna2DataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView2.RowHeadersVisible = false;
             this.guna2DataGridView2.RowHeadersWidth = 62;
-            this.guna2DataGridView2.Size = new System.Drawing.Size(1166, 527);
+            this.guna2DataGridView2.Size = new System.Drawing.Size(1750, 809);
             this.guna2DataGridView2.TabIndex = 1;
             this.guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -411,9 +419,10 @@ namespace Gestion_M
             this.tabPage2.Controls.Add(this.tableLayoutPanel5);
             this.tabPage2.Controls.Add(this.tableLayoutPanel4);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1164, 628);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1750, 992);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gestion des Produit";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -424,20 +433,22 @@ namespace Gestion_M
             this.tableLayoutPanel11.ColumnCount = 1;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Controls.Add(this.guna2HtmlLabel2, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(580, 38);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(870, 58);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(95, 29);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(142, 45);
             this.tableLayoutPanel11.TabIndex = 26;
             // 
             // guna2HtmlLabel2
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(3, 3);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(4, 5);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(89, 23);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(134, 35);
             this.guna2HtmlLabel2.TabIndex = 23;
             this.guna2HtmlLabel2.Text = "Date Creation :";
             // 
@@ -447,20 +458,22 @@ namespace Gestion_M
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(6, 111);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(9, 171);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(63, 22);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(94, 34);
             this.tableLayoutPanel10.TabIndex = 25;
             // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 22);
+            this.label2.Size = new System.Drawing.Size(86, 34);
             this.label2.TabIndex = 18;
             this.label2.Text = "Status :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -471,20 +484,22 @@ namespace Gestion_M
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Controls.Add(this.guna2HtmlLabel1, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 40);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(9, 62);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(63, 27);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(94, 42);
             this.tableLayoutPanel9.TabIndex = 24;
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 3);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(4, 5);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(57, 21);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(86, 32);
             this.guna2HtmlLabel1.TabIndex = 19;
             this.guna2HtmlLabel1.Text = "Problem :";
             // 
@@ -494,11 +509,12 @@ namespace Gestion_M
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.guna2DateTimePicker1, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(701, 29);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(1052, 45);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(246, 42);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(369, 65);
             this.tableLayoutPanel8.TabIndex = 22;
             // 
             // guna2DateTimePicker1
@@ -509,11 +525,12 @@ namespace Gestion_M
             this.guna2DateTimePicker1.FillColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(3, 3);
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(4, 5);
+            this.guna2DateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(240, 36);
+            this.guna2DateTimePicker1.Size = new System.Drawing.Size(361, 55);
             this.guna2DateTimePicker1.TabIndex = 15;
             this.guna2DateTimePicker1.Value = new System.DateTime(2024, 2, 4, 13, 58, 29, 515);
             // 
@@ -523,11 +540,12 @@ namespace Gestion_M
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.guna2ComboBox2, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(83, 32);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(124, 49);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(324, 42);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(486, 65);
             this.tableLayoutPanel7.TabIndex = 21;
             // 
             // guna2ComboBox2
@@ -541,9 +559,10 @@ namespace Gestion_M
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(3, 3);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(4, 5);
+            this.guna2ComboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(318, 36);
+            this.guna2ComboBox2.Size = new System.Drawing.Size(478, 36);
             this.guna2ComboBox2.TabIndex = 16;
             // 
             // tableLayoutPanel6
@@ -552,12 +571,13 @@ namespace Gestion_M
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.guna2ComboBox1, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(80, 101);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(120, 155);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(327, 42);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(490, 65);
             this.tableLayoutPanel6.TabIndex = 20;
             // 
             // guna2ComboBox1
@@ -571,9 +591,10 @@ namespace Gestion_M
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(3, 3);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(4, 5);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(321, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(482, 36);
             this.guna2ComboBox1.TabIndex = 16;
             // 
             // tableLayoutPanel5
@@ -584,11 +605,12 @@ namespace Gestion_M
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.guna2DataGridView1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 149);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 229);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1163, 432);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1744, 665);
             this.tableLayoutPanel5.TabIndex = 14;
             // 
             // guna2DataGridView1
@@ -627,7 +649,8 @@ namespace Gestion_M
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.guna2DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(4, 5);
+            this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -639,7 +662,7 @@ namespace Gestion_M
             this.guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 62;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1157, 426);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1736, 655);
             this.guna2DataGridView1.TabIndex = 1;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -696,21 +719,25 @@ namespace Gestion_M
             // Column6
             // 
             this.Column6.HeaderText = "Date Fin";
+            this.Column6.MinimumWidth = 8;
             this.Column6.Name = "Column6";
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Details";
+            this.Column7.MinimumWidth = 8;
             this.Column7.Name = "Column7";
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Prix";
+            this.Column8.MinimumWidth = 8;
             this.Column8.Name = "Column8";
             // 
             // Column9
             // 
             this.Column9.HeaderText = "Type de problem";
+            this.Column9.MinimumWidth = 8;
             this.Column9.Name = "Column9";
             // 
             // tableLayoutPanel4
@@ -723,11 +750,12 @@ namespace Gestion_M
             this.tableLayoutPanel4.Controls.Add(this.guna2Button5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.guna2Button6, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.guna2Button7, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(698, 101);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1047, 155);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(445, 37);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(668, 57);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
             // guna2Button5
@@ -744,9 +772,10 @@ namespace Gestion_M
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
             this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
             this.guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button5.Location = new System.Drawing.Point(3, 3);
+            this.guna2Button5.Location = new System.Drawing.Point(4, 5);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(142, 31);
+            this.guna2Button5.Size = new System.Drawing.Size(214, 47);
             this.guna2Button5.TabIndex = 7;
             this.guna2Button5.Text = " Ajouter";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
@@ -764,9 +793,10 @@ namespace Gestion_M
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
             this.guna2Button6.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button6.Image")));
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button6.Location = new System.Drawing.Point(299, 3);
+            this.guna2Button6.Location = new System.Drawing.Point(448, 5);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(143, 31);
+            this.guna2Button6.Size = new System.Drawing.Size(216, 47);
             this.guna2Button6.TabIndex = 8;
             this.guna2Button6.Text = "Modifier";
             // 
@@ -784,9 +814,10 @@ namespace Gestion_M
             this.guna2Button7.ForeColor = System.Drawing.Color.White;
             this.guna2Button7.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button7.Image")));
             this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button7.Location = new System.Drawing.Point(151, 3);
+            this.guna2Button7.Location = new System.Drawing.Point(226, 5);
+            this.guna2Button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button7.Name = "guna2Button7";
-            this.guna2Button7.Size = new System.Drawing.Size(142, 31);
+            this.guna2Button7.Size = new System.Drawing.Size(214, 47);
             this.guna2Button7.TabIndex = 6;
             this.guna2Button7.Text = "Supprimer";
             // 
@@ -794,9 +825,10 @@ namespace Gestion_M
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Goldenrod;
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1164, 628);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage3.Size = new System.Drawing.Size(1750, 992);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Gestion de Maintenance";
             // 
@@ -808,19 +840,21 @@ namespace Gestion_M
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1172, 682);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1758, 1049);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 682);
+            this.ClientSize = new System.Drawing.Size(1758, 1049);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1188, 721);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1771, 1018);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -862,7 +896,7 @@ namespace Gestion_M
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
