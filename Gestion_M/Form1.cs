@@ -61,5 +61,15 @@ namespace Gestion_M
             fr.ShowDialog();
         }
 
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            AjouterProduit fr = new AjouterProduit();
+            fr.ShowDialog();
+        }
     }
 }
