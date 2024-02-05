@@ -19,7 +19,7 @@ namespace Gestion_M
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+             
         }
         private void AffNotification(string type, string Message)
         {
@@ -49,6 +49,16 @@ namespace Gestion_M
         }
 
         private void AjouterClient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inp_Nom_Client_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

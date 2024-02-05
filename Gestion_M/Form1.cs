@@ -77,5 +77,11 @@ namespace Gestion_M
             AjouterProduit fr = new AjouterProduit();
             fr.ShowDialog();
         }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            AjouterCategorie fr = new AjouterCategorie();
+            fr.ShowDialog();
+        }
     }
 }

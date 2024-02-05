@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjouterCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterCategorie.Designer.cs">
+      <DependentUpon>AjouterCategorie.cs</DependentUpon>
+    </Compile>
     <Compile Include="AjouterClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="ToastForm.Designer.cs">
       <DependentUpon>ToastForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AjouterCategorie.resx">
+      <DependentUpon>AjouterCategorie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AjouterClient.resx">
       <DependentUpon>AjouterClient.cs</DependentUpon>
     </EmbeddedResource>
