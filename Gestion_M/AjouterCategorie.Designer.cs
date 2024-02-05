@@ -29,7 +29,6 @@ namespace Gestion_M
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AjouterCategorie));
             this.label1 = new System.Windows.Forms.Label();
             this.Inp_Nom_Client = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -39,9 +38,10 @@ namespace Gestion_M
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 80);
+            this.label1.Location = new System.Drawing.Point(84, 123);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(50, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nom :";
             // 
@@ -56,13 +56,13 @@ namespace Gestion_M
             this.Inp_Nom_Client.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Inp_Nom_Client.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Inp_Nom_Client.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Inp_Nom_Client.Location = new System.Drawing.Point(142, 69);
-            this.Inp_Nom_Client.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Inp_Nom_Client.Location = new System.Drawing.Point(213, 106);
+            this.Inp_Nom_Client.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Inp_Nom_Client.Name = "Inp_Nom_Client";
             this.Inp_Nom_Client.PasswordChar = '\0';
             this.Inp_Nom_Client.PlaceholderText = "";
             this.Inp_Nom_Client.SelectedText = "";
-            this.Inp_Nom_Client.Size = new System.Drawing.Size(289, 36);
+            this.Inp_Nom_Client.Size = new System.Drawing.Size(434, 55);
             this.Inp_Nom_Client.TabIndex = 11;
             // 
             // guna2Button1
@@ -76,11 +76,12 @@ namespace Gestion_M
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.Image = global::Gestion_M.Properties.Resources.x_mark;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(142, 152);
+            this.guna2Button1.Location = new System.Drawing.Point(213, 234);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(130, 31);
+            this.guna2Button1.Size = new System.Drawing.Size(195, 48);
             this.guna2Button1.TabIndex = 14;
             this.guna2Button1.Text = " Annuler";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -96,25 +97,27 @@ namespace Gestion_M
             this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
             this.guna2Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
+            this.guna2Button3.Image = global::Gestion_M.Properties.Resources.telecharger;
             this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.Location = new System.Drawing.Point(301, 152);
+            this.guna2Button3.Location = new System.Drawing.Point(452, 234);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(130, 31);
+            this.guna2Button3.Size = new System.Drawing.Size(195, 48);
             this.guna2Button3.TabIndex = 13;
             this.guna2Button3.Text = "Enregistrer";
             // 
             // AjouterCategorie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(508, 240);
+            this.ClientSize = new System.Drawing.Size(762, 369);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Inp_Nom_Client);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AjouterCategorie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AjouterCategorie";

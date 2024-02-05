@@ -83,5 +83,10 @@ namespace Gestion_M
             AjouterCategorie fr = new AjouterCategorie();
             fr.ShowDialog();
         }
+
+        private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
