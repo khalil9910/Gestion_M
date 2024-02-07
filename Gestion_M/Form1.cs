@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Gestion_M
 {
     public partial class Form1 : Form
@@ -16,24 +16,49 @@ namespace Gestion_M
         {
             InitializeComponent();
         }
+        Db db = new Db();
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Db db = new Db();
+            ChargerCategories();
            
-            
-            
 
-            
+
+
         }
-    
+
+       public void ChargerCategories()
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                try
+                {
+                    // Créer la commande SQL pour sélectionner toutes les catégories
+                    string query = "SELECT * FROM Categorie";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+                    // Remplir un DataSet avec les résultats de la requête
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet, "Categorie");
+
+                    // Lier le DataGridView avec le DataSet
+                    dataGridViewCategories.DataSource = dataSet.Tables["Categorie"];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors du chargement des catégories : " + ex.Message);
+                }
+            }
+        }
+
 
         //private void AffNotification(string type , string Message)
         //{
         //    ToastForm Tost = new ToastForm(type, Message);
         //    Tost.Show();
         //}
-        
+
 
 
 
