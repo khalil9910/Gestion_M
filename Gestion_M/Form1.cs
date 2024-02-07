@@ -19,8 +19,14 @@ namespace Gestion_M
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Db db = new Db();
+           
+            
+            
 
+            
         }
+    
 
         //private void AffNotification(string type , string Message)
         //{
@@ -85,6 +91,11 @@ namespace Gestion_M
         }
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
