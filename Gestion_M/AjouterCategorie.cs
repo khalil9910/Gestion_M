@@ -22,6 +22,19 @@ namespace Gestion_M
         {
             this.Close();
         }
+        public void RefreshCategories()
+        {
+           
+            Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+
+        
+            if (existingForm1 != null)
+            {
+                existingForm1.DisplayCategories();
+            }
+        }
+
+
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
@@ -33,18 +46,18 @@ namespace Gestion_M
                 {
                     try
                     {
-                       
                         string query = "INSERT INTO Categorie (libelle) VALUES (@libelle)";
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@libelle", nomCategorie);
 
-                      
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Catégorie ajoutée avec succès !");
-                            Inp_Nom_Client.Clear(); 
+                            MessageBox.Show("Catégorie ajoutée avec succès!");
+                            Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                            existingForm1?.DisplayCategories(); // Call the DisplayCategories method
+                            Inp_Nom_Client.Clear();
                         }
                         else
                         {
@@ -61,6 +74,11 @@ namespace Gestion_M
             {
                 MessageBox.Show("Veuillez entrer un nom de catégorie.");
             }
+        }
+
+        private void AjouterCategorie_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
