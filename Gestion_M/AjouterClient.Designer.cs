@@ -60,7 +60,6 @@ namespace Gestion_M
             this.Inp_Nom_Client.SelectedText = "";
             this.Inp_Nom_Client.Size = new System.Drawing.Size(289, 36);
             this.Inp_Nom_Client.TabIndex = 0;
-            this.Inp_Nom_Client.TextChanged += new System.EventHandler(this.Inp_Nom_Client_TextChanged);
             // 
             // Inp_Email_Client
             // 
@@ -157,7 +156,6 @@ namespace Gestion_M
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Nom :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // guna2Button1
             // 
@@ -219,7 +217,6 @@ namespace Gestion_M
             this.Name = "AjouterClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AjouterClient";
-            this.Load += new System.EventHandler(this.AjouterClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
