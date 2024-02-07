@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e619fbb6a8356cc568c9fd2dc4d2747ad3a1a07
 namespace Gestion_M
 {
     public partial class Form1 : Form
@@ -26,6 +29,7 @@ namespace Gestion_M
             timer.Start();
         }
         Db db = new Db();
+<<<<<<< HEAD
         private Timer timer;
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -76,6 +80,39 @@ namespace Gestion_M
                         GV_CLINET.DataSource = ds;
                         GV_CLINET.DataMember = "Client";
                     }
+=======
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ChargerCategories();
+           
+
+
+
+        }
+
+       public void ChargerCategories()
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                try
+                {
+                    // Créer la commande SQL pour sélectionner toutes les catégories
+                    string query = "SELECT * FROM Categorie";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+                    // Remplir un DataSet avec les résultats de la requête
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet, "Categorie");
+
+                    // Lier le DataGridView avec le DataSet
+                    dataGridViewCategories.DataSource = dataSet.Tables["Categorie"];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors du chargement des catégories : " + ex.Message);
+>>>>>>> 0e619fbb6a8356cc568c9fd2dc4d2747ad3a1a07
                 }
             }
         }
