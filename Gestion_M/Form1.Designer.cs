@@ -156,16 +156,16 @@ namespace Gestion_M
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 44);
-<<<<<<< HEAD
+
             this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage5.Size = new System.Drawing.Size(1750, 991);
-=======
+
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1164, 628);
->>>>>>> 0e619fbb6a8356cc568c9fd2dc4d2747ad3a1a07
+
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Accueil";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -389,13 +389,12 @@ namespace Gestion_M
             this.GV_CLINET.Location = new System.Drawing.Point(4, 5);
             this.GV_CLINET.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GV_CLINET.Name = "GV_CLINET";
-=======
             this.guna2DataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2DataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.guna2DataGridView2.Location = new System.Drawing.Point(3, 3);
             this.guna2DataGridView2.Name = "guna2DataGridView2";
->>>>>>> 0e619fbb6a8356cc568c9fd2dc4d2747ad3a1a07
+
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -403,7 +402,6 @@ namespace Gestion_M
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-<<<<<<< HEAD
             this.GV_CLINET.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GV_CLINET.RowHeadersVisible = false;
             this.GV_CLINET.RowHeadersWidth = 62;
@@ -1122,7 +1120,6 @@ namespace Gestion_M
             this.label1.Location = new System.Drawing.Point(80, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 14);
->>>>>>> 0e619fbb6a8356cc568c9fd2dc4d2747ad3a1a07
             this.label1.TabIndex = 12;
             this.label1.Text = "Nom :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1134,7 +1131,6 @@ namespace Gestion_M
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-<<<<<<< HEAD
             this.tableLayoutPanel13.Controls.Add(this.guna2DataGridView3, 0, 0);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(-6, 118);
             this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
