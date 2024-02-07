@@ -19,7 +19,7 @@ namespace Gestion_M
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-             
+            this.Close();
         }
         private void AffNotification(string type, string Message)
         {
