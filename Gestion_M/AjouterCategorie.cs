@@ -21,6 +21,7 @@ namespace Gestion_M
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             this.Close();
+           
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -44,7 +45,8 @@ namespace Gestion_M
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Catégorie ajoutée avec succès !");
-                            Inp_Nom_Client.Clear(); 
+                            Inp_Nom_Client.Clear();
+                     
                         }
                         else
                         {
@@ -61,6 +63,14 @@ namespace Gestion_M
             {
                 MessageBox.Show("Veuillez entrer un nom de catégorie.");
             }
+           
+        }
+
+
+
+        private void AjouterCategorie_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

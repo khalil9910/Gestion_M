@@ -118,6 +118,7 @@ namespace Gestion_M
             this.Name = "AjouterCategorie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AjouterCategorie";
+            this.Load += new System.EventHandler(this.AjouterCategorie_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
