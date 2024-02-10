@@ -30,9 +30,11 @@ namespace Gestion_M
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Inp_Nom_Client = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Inp_Nom_Categorie = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_enrejerstrer = new Guna.UI2.WinForms.Guna2Button();
+            this.modofierBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.id = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -44,25 +46,25 @@ namespace Gestion_M
             this.label1.TabIndex = 12;
             this.label1.Text = "Nom :";
             // 
-            // Inp_Nom_Client
+            // Inp_Nom_Categorie
             // 
-            this.Inp_Nom_Client.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Inp_Nom_Client.DefaultText = "";
-            this.Inp_Nom_Client.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Inp_Nom_Client.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Inp_Nom_Client.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Inp_Nom_Client.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Inp_Nom_Client.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Inp_Nom_Client.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Inp_Nom_Client.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Inp_Nom_Client.Location = new System.Drawing.Point(142, 69);
-            this.Inp_Nom_Client.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Inp_Nom_Client.Name = "Inp_Nom_Client";
-            this.Inp_Nom_Client.PasswordChar = '\0';
-            this.Inp_Nom_Client.PlaceholderText = "";
-            this.Inp_Nom_Client.SelectedText = "";
-            this.Inp_Nom_Client.Size = new System.Drawing.Size(289, 36);
-            this.Inp_Nom_Client.TabIndex = 11;
+            this.Inp_Nom_Categorie.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Inp_Nom_Categorie.DefaultText = "";
+            this.Inp_Nom_Categorie.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Inp_Nom_Categorie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Inp_Nom_Categorie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Inp_Nom_Categorie.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Inp_Nom_Categorie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Inp_Nom_Categorie.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Inp_Nom_Categorie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Inp_Nom_Categorie.Location = new System.Drawing.Point(142, 69);
+            this.Inp_Nom_Categorie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Inp_Nom_Categorie.Name = "Inp_Nom_Categorie";
+            this.Inp_Nom_Categorie.PasswordChar = '\0';
+            this.Inp_Nom_Categorie.PlaceholderText = "";
+            this.Inp_Nom_Categorie.SelectedText = "";
+            this.Inp_Nom_Categorie.Size = new System.Drawing.Size(289, 36);
+            this.Inp_Nom_Categorie.TabIndex = 11;
             // 
             // guna2Button1
             // 
@@ -104,16 +106,47 @@ namespace Gestion_M
             this.btn_enrejerstrer.Text = "Enregistrer";
             this.btn_enrejerstrer.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
+            // modofierBtn
+            // 
+            this.modofierBtn.BorderRadius = 2;
+            this.modofierBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.modofierBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.modofierBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.modofierBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.modofierBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.modofierBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
+            this.modofierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.modofierBtn.ForeColor = System.Drawing.Color.White;
+            this.modofierBtn.Image = global::Gestion_M.Properties.Resources.telecharger;
+            this.modofierBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.modofierBtn.Location = new System.Drawing.Point(301, 152);
+            this.modofierBtn.Name = "modofierBtn";
+            this.modofierBtn.Size = new System.Drawing.Size(130, 31);
+            this.modofierBtn.TabIndex = 15;
+            this.modofierBtn.Text = "Enregistrer";
+            this.modofierBtn.Click += new System.EventHandler(this.guna2Button2_Click);
+            // 
+            // id
+            // 
+            this.id.AutoSize = true;
+            this.id.Location = new System.Drawing.Point(56, 28);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(15, 13);
+            this.id.TabIndex = 16;
+            this.id.Text = "id";
+            // 
             // AjouterCategorie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(508, 240);
+            this.Controls.Add(this.id);
+            this.Controls.Add(this.modofierBtn);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_enrejerstrer);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Inp_Nom_Client);
+            this.Controls.Add(this.Inp_Nom_Categorie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AjouterCategorie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -127,8 +160,10 @@ namespace Gestion_M
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox Inp_Nom_Client;
+        private Guna.UI2.WinForms.Guna2TextBox Inp_Nom_Categorie;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button btn_enrejerstrer;
+        private Guna.UI2.WinForms.Guna2Button modofierBtn;
+        private System.Windows.Forms.Label id;
     }
 }

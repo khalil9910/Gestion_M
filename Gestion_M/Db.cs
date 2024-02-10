@@ -24,6 +24,14 @@ namespace Gestion_M
             {
                 Console.WriteLine("Erreur lors de la connexion à la base de données : " + ex.Message);
             }
+            finally
+            {
+                // Ensure connection is closed before returning
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
             return connection;
         }
     }
