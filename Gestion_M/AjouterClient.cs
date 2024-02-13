@@ -53,11 +53,11 @@ namespace Gestion_M
             lbl_id_clinet.Visible = val;
            
         }
-        public void renameboutton()
+        public void renameboutton(bool val)
         {
 
             Modifier_CLIENT.Text = "Modifier";
-            Modifier_CLIENT.Visible = true;
+            Modifier_CLIENT.Visible = val;
 
         }
         public void buttonClents()
