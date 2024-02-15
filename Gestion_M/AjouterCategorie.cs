@@ -73,7 +73,7 @@ namespace Gestion_M
                 {
                     try
                     {
-                        connection.Open(); // Open the connection
+                        connection.Open();
 
                         string query = "INSERT INTO Categorie (libelle) VALUES (@libelle)";
                         SqlCommand command = new SqlCommand(query, connection);
@@ -124,12 +124,12 @@ namespace Gestion_M
                 {
                     try
                     {
-                        connection.Open(); // Open the connection
+                        connection.Open(); 
 
                         string query = "UPDATE Categorie SET libelle = @libelle WHERE idCat = @categorie_id";
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@libelle", nomCategorie);
-                        command.Parameters.AddWithValue("@categorie_id", categoryId); // Specify the ID of the category you want to update
+                        command.Parameters.AddWithValue("@categorie_id", categoryId);
 
                         int rowsAffected = command.ExecuteNonQuery();
 

@@ -14,14 +14,13 @@ namespace Gestion_M
     public partial class Form1 : Form
     {
         public AjouterCategorie form2;
-        private Timer timer = new Timer();
+     
         public Form1()
         {
             form2 = new AjouterCategorie();
 
             InitializeComponent();
-            timer.Interval =5000; // 10 secondes
-            timer.Tick += Timer_Tick;
+           
 
         }
         Db db = new Db();
@@ -33,14 +32,36 @@ namespace Gestion_M
         {
             DisplayCategories();
             AfficherDonneesClients();
-            timer.Start();
+            
 
         }
-        private void Timer_Tick(object sender, EventArgs e)
+
+        private void SearchClient(string searchTerm)
         {
-            AfficherDonneesClients();
+            using (SqlConnection connection = db.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM Client WHERE nom LIKE @searchTerm";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+
+                    DataGridClient.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la recherche de catégories : " + ex.Message);
+                }
+            }
         }
-       
+
 
         private void SearchCategory(string searchTerm)
         {
@@ -48,7 +69,7 @@ namespace Gestion_M
             {
                 try
                 {
-                    connection.Open(); // Open the connection
+                    connection.Open(); 
 
                     string query = "SELECT * FROM Categorie WHERE libelle LIKE @searchTerm";
                     SqlCommand command = new SqlCommand(query, connection);
@@ -58,7 +79,7 @@ namespace Gestion_M
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    // Assuming you have a DataGridView named dgvCategories to display the results
+                   
                     Categorie.DataSource = dt;
                 }
                 catch (Exception ex)
@@ -68,7 +89,7 @@ namespace Gestion_M
             }
         }
 
-        private void AfficherDonneesClients()
+        public void AfficherDonneesClients()
         {
             using (SqlConnection connection = db.GetConnection())
             {
@@ -126,37 +147,37 @@ namespace Gestion_M
         private void guna2Button4_Click(object sender, EventArgs e)
         {
 
-            if (Categorie.SelectedRows.Count > 0)
+            if (DataGridClient.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = DataGridClient.SelectedRows[0];
                 int index = selectedRow.Index;
 
-                int Id_clinet = Convert.ToInt32(selectedRow.Cells["idClient"].Value);
+                int entityId = Convert.ToInt32(selectedRow.Cells["idClient"].Value);
 
                 using (SqlConnection connection = db.GetConnection())
                 {
                     try
                     {
-                        string query = "DELETE FROM Client WHERE idClient = @idCat";
+                        string query = "DELETE FROM Client  WHERE idClient  = @Client ";
                         SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@idCat", Id_clinet);
+                        command.Parameters.AddWithValue("@Client", entityId);
 
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Catégorie supprimée avec succès!");
-                            this.Categorie.Rows.RemoveAt(index); // Remove the row from DataGridView
+                            MessageBox.Show("Client supprimée avec succès!");
+                            DataGridClient.Rows.RemoveAt(index);
                         }
                         else
                         {
-                            MessageBox.Show("Erreur lors de la suppression de la catégorie.");
+                            MessageBox.Show("Erreur lors de la suppression de Client.");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Erreur lors de la suppression de la catégorie : " + ex.Message);
+                        MessageBox.Show("Erreur lors de la suppression de l'entité :"+ex.Message);
                     }
                     finally
                     {
@@ -169,7 +190,7 @@ namespace Gestion_M
             }
             else
             {
-                MessageBox.Show("Veuillez sélectionner une catégorie à supprimer.");
+                MessageBox.Show("Veuillez sélectionner une entité à supprimer.");
             }
         }
         AjouterClient AjouterClient = new AjouterClient();
@@ -191,7 +212,7 @@ namespace Gestion_M
                     string Telephone_client = selectedRow2.Cells["telephone"].Value.ToString();
 
                     int id_conversion = int.Parse(Id_client);
-                    MessageBox.Show(id_conversion.ToString());
+                
 
                     using (SqlConnection connection = db.GetConnection())
                     {
@@ -259,8 +280,7 @@ namespace Gestion_M
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
-            // AjouterCategorie fr = new AjouterCategorie();
-            // btmo.visible = false;
+       
             form2.HideLabel();
             form2.button();
 
@@ -310,7 +330,7 @@ namespace Gestion_M
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Catégorie supprimée avec succès!");
-                            this.Categorie.Rows.RemoveAt(index); // Remove the row from DataGridView
+                            this.Categorie.Rows.RemoveAt(index); 
                         }
                         else
                         {
@@ -341,7 +361,7 @@ namespace Gestion_M
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             form2.buttonEr();
-            // form2.ShowDialog();
+        
             if (Categorie.SelectedRows.Count > 0)
             {
                 try
@@ -440,6 +460,25 @@ namespace Gestion_M
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recherch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = rrcherch.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                SearchClient(searchTerm);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez entrer un terme de recherche.");
+            }
         }
     }
 

@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Gestion_M
 {
+    
     public partial class AjouterProduit : Form
     {
+        Db db = new Db();
         public AjouterProduit()
         {
+         
             InitializeComponent();
         }
 
@@ -31,5 +35,18 @@ namespace Gestion_M
         {
            
         }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        
+
+        private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            }
+
+        }
     }
-}
+

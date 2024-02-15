@@ -69,6 +69,17 @@ namespace Gestion_M
         {
             this.Close();
         }
+        public void RefreshClient()
+        {
+
+            Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+
+
+            if (existingForm1 != null)
+            {
+                existingForm1.AfficherDonneesClients();
+            }
+        }
         private void AffNotification(string type, string Message)
         {
             ToastForm Tost = new ToastForm(type, Message);
@@ -104,8 +115,10 @@ namespace Gestion_M
                     }
 
                 }
-              
+                Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                existingForm1?.AfficherDonneesClients();
                 AffNotification("Succes", "Enregistre avec succes ");
+               
             }
 
 
@@ -139,7 +152,7 @@ namespace Gestion_M
 
         public void Update(string nom, string prenom, string email, string telephone, int id)
         {
-            // Exécuter une requête de mise à jour dans la base de données
+          
             using (SqlConnection connection = db.GetConnection())
             {
                 connection.Open();
@@ -154,6 +167,8 @@ namespace Gestion_M
 
                 if (rowsAffected > 0)
                 {
+                    Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    existingForm1?.AfficherDonneesClients();
                     AffNotification("Succes", "Enregistrement mis à jour avec succès !");
                    
 
