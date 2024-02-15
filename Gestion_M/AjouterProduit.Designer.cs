@@ -31,7 +31,6 @@ namespace Gestion_M
         {
             this.client = new Guna.UI2.WinForms.Guna2ComboBox();
             this.categoryComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -45,6 +44,7 @@ namespace Gestion_M
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.type = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SuspendLayout();
             // 
             // client
@@ -78,21 +78,6 @@ namespace Gestion_M
             this.categoryComboBox.Size = new System.Drawing.Size(302, 36);
             this.categoryComboBox.TabIndex = 1;
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox2_SelectedIndexChanged);
-            // 
-            // guna2ComboBox3
-            // 
-            this.guna2ComboBox3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(217, 348);
-            this.guna2ComboBox3.Name = "guna2ComboBox3";
-            this.guna2ComboBox3.Size = new System.Drawing.Size(302, 36);
-            this.guna2ComboBox3.TabIndex = 2;
             // 
             // guna2HtmlLabel1
             // 
@@ -259,6 +244,21 @@ namespace Gestion_M
             this.label1.TabIndex = 17;
             this.label1.Text = "Client :";
             // 
+            // type
+            // 
+            this.type.BackColor = System.Drawing.Color.Transparent;
+            this.type.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.type.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.type.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.type.ItemHeight = 30;
+            this.type.Location = new System.Drawing.Point(217, 347);
+            this.type.Name = "type";
+            this.type.Size = new System.Drawing.Size(302, 36);
+            this.type.TabIndex = 18;
+            // 
             // AjouterProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +266,7 @@ namespace Gestion_M
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(595, 607);
+            this.Controls.Add(this.type);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2Button3);
@@ -279,7 +280,6 @@ namespace Gestion_M
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.guna2ComboBox3);
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.client);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -296,7 +296,6 @@ namespace Gestion_M
 
         private Guna.UI2.WinForms.Guna2ComboBox client;
         private Guna.UI2.WinForms.Guna2ComboBox categoryComboBox;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
@@ -310,5 +309,6 @@ namespace Gestion_M
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2ComboBox type;
     }
 }

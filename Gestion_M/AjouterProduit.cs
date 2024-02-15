@@ -29,6 +29,19 @@ namespace Gestion_M
         private void AjouterProduit_Load(object sender, EventArgs e)
         {
 
+           db. remplirCombp("libelle", "idCat", "Categorie", categoryComboBox);
+            db.remplirCombp("nom", "idClient", "Client", client);
+
+
+            db.comn("typeProblem", "Produit", type);
+
+
+
+
+
+
+
+
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
