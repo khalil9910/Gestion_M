@@ -238,7 +238,7 @@ namespace Gestion_M
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::Gestion_M.Properties.Resources.x_mark;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(217, 602);
+            this.guna2Button1.Location = new System.Drawing.Point(217, 622);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(130, 31);
             this.guna2Button1.TabIndex = 16;
@@ -258,7 +258,7 @@ namespace Gestion_M
             this.Enregistrer_produit.ForeColor = System.Drawing.Color.White;
             this.Enregistrer_produit.Image = global::Gestion_M.Properties.Resources.telecharger;
             this.Enregistrer_produit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Enregistrer_produit.Location = new System.Drawing.Point(389, 602);
+            this.Enregistrer_produit.Location = new System.Drawing.Point(389, 622);
             this.Enregistrer_produit.Name = "Enregistrer_produit";
             this.Enregistrer_produit.Size = new System.Drawing.Size(130, 31);
             this.Enregistrer_produit.TabIndex = 15;
@@ -278,7 +278,7 @@ namespace Gestion_M
             this.modofierBtn.ForeColor = System.Drawing.Color.White;
             this.modofierBtn.Image = global::Gestion_M.Properties.Resources.telecharger;
             this.modofierBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.modofierBtn.Location = new System.Drawing.Point(57, 602);
+            this.modofierBtn.Location = new System.Drawing.Point(57, 622);
             this.modofierBtn.Name = "modofierBtn";
             this.modofierBtn.Size = new System.Drawing.Size(130, 31);
             this.modofierBtn.TabIndex = 19;
@@ -318,7 +318,7 @@ namespace Gestion_M
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(598, 634);
+            this.ClientSize = new System.Drawing.Size(598, 680);
             this.Controls.Add(this.Cmd_status);
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.modofierBtn);
