@@ -37,10 +37,10 @@ namespace Gestion_M
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_id_clinet = new System.Windows.Forms.Label();
             this.Modifier_CLIENT = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // Inp_Nom_Client
@@ -83,6 +83,7 @@ namespace Gestion_M
             this.Inp_Email_Client.SelectedText = "";
             this.Inp_Email_Client.Size = new System.Drawing.Size(289, 36);
             this.Inp_Email_Client.TabIndex = 1;
+            this.Inp_Email_Client.TextChanged += new System.EventHandler(this.Inp_Email_Client_TextChanged);
             // 
             // Inp_Telephone_Client
             // 
@@ -103,6 +104,7 @@ namespace Gestion_M
             this.Inp_Telephone_Client.SelectedText = "";
             this.Inp_Telephone_Client.Size = new System.Drawing.Size(289, 36);
             this.Inp_Telephone_Client.TabIndex = 2;
+            this.Inp_Telephone_Client.TextChanged += new System.EventHandler(this.Inp_Telephone_Client_TextChanged);
             // 
             // Inp_Prenom_Client
             // 
@@ -123,6 +125,7 @@ namespace Gestion_M
             this.Inp_Prenom_Client.SelectedText = "";
             this.Inp_Prenom_Client.Size = new System.Drawing.Size(289, 36);
             this.Inp_Prenom_Client.TabIndex = 3;
+            this.Inp_Prenom_Client.TextChanged += new System.EventHandler(this.Inp_Prenom_Client_TextChanged);
             // 
             // guna2HtmlLabel2
             // 
@@ -132,6 +135,7 @@ namespace Gestion_M
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(60, 15);
             this.guna2HtmlLabel2.TabIndex = 5;
             this.guna2HtmlLabel2.Text = "Telephone :";
+            this.guna2HtmlLabel2.Click += new System.EventHandler(this.guna2HtmlLabel2_Click);
             // 
             // guna2HtmlLabel3
             // 
@@ -141,6 +145,7 @@ namespace Gestion_M
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(34, 15);
             this.guna2HtmlLabel3.TabIndex = 6;
             this.guna2HtmlLabel3.Text = "Email :";
+            this.guna2HtmlLabel3.Click += new System.EventHandler(this.guna2HtmlLabel3_Click);
             // 
             // guna2HtmlLabel4
             // 
@@ -150,6 +155,7 @@ namespace Gestion_M
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(45, 15);
             this.guna2HtmlLabel4.TabIndex = 7;
             this.guna2HtmlLabel4.Text = "Prenom :";
+            this.guna2HtmlLabel4.Click += new System.EventHandler(this.guna2HtmlLabel4_Click);
             // 
             // label1
             // 
@@ -160,6 +166,35 @@ namespace Gestion_M
             this.label1.TabIndex = 10;
             this.label1.Text = "Nom :";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lbl_id_clinet
+            // 
+            this.lbl_id_clinet.AutoSize = true;
+            this.lbl_id_clinet.Location = new System.Drawing.Point(206, 16);
+            this.lbl_id_clinet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_id_clinet.Name = "lbl_id_clinet";
+            this.lbl_id_clinet.Size = new System.Drawing.Size(0, 13);
+            this.lbl_id_clinet.TabIndex = 11;
+            this.lbl_id_clinet.Click += new System.EventHandler(this.lbl_id_clinet_Click);
+            // 
+            // Modifier_CLIENT
+            // 
+            this.Modifier_CLIENT.BorderRadius = 2;
+            this.Modifier_CLIENT.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Modifier_CLIENT.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Modifier_CLIENT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Modifier_CLIENT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Modifier_CLIENT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Modifier_CLIENT.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
+            this.Modifier_CLIENT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Modifier_CLIENT.ForeColor = System.Drawing.Color.White;
+            this.Modifier_CLIENT.Image = global::Gestion_M.Properties.Resources.telecharger;
+            this.Modifier_CLIENT.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Modifier_CLIENT.Location = new System.Drawing.Point(365, 415);
+            this.Modifier_CLIENT.Name = "Modifier_CLIENT";
+            this.Modifier_CLIENT.Size = new System.Drawing.Size(130, 31);
+            this.Modifier_CLIENT.TabIndex = 12;
+            this.Modifier_CLIENT.Click += new System.EventHandler(this.Modifier_CLIENT_Click);
             // 
             // guna2Button1
             // 
@@ -200,34 +235,6 @@ namespace Gestion_M
             this.guna2Button3.TabIndex = 8;
             this.guna2Button3.Text = "Enregistrer";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
-            // 
-            // lbl_id_clinet
-            // 
-            this.lbl_id_clinet.AutoSize = true;
-            this.lbl_id_clinet.Location = new System.Drawing.Point(206, 16);
-            this.lbl_id_clinet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_id_clinet.Name = "lbl_id_clinet";
-            this.lbl_id_clinet.Size = new System.Drawing.Size(0, 13);
-            this.lbl_id_clinet.TabIndex = 11;
-            // 
-            // Modifier_CLIENT
-            // 
-            this.Modifier_CLIENT.BorderRadius = 2;
-            this.Modifier_CLIENT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Modifier_CLIENT.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Modifier_CLIENT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Modifier_CLIENT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Modifier_CLIENT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Modifier_CLIENT.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
-            this.Modifier_CLIENT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Modifier_CLIENT.ForeColor = System.Drawing.Color.White;
-            this.Modifier_CLIENT.Image = global::Gestion_M.Properties.Resources.telecharger;
-            this.Modifier_CLIENT.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Modifier_CLIENT.Location = new System.Drawing.Point(365, 415);
-            this.Modifier_CLIENT.Name = "Modifier_CLIENT";
-            this.Modifier_CLIENT.Size = new System.Drawing.Size(130, 31);
-            this.Modifier_CLIENT.TabIndex = 12;
-            this.Modifier_CLIENT.Click += new System.EventHandler(this.Modifier_CLIENT_Click);
             // 
             // AjouterClient
             // 

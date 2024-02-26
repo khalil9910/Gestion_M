@@ -32,7 +32,23 @@ namespace Gestion_M
         {
             DisplayCategories();
             AfficherDonneesClients();
-            
+            AfficherDonneesProduit();
+
+
+
+        }
+
+        public void AfficherDonneesProduit()
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                string query = "SELECT * FROM Produit";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                DatagreadView_Produit.DataSource = table;
+
+            }
 
         }
 
@@ -276,6 +292,7 @@ namespace Gestion_M
         {
             AjouterProduit fr = new AjouterProduit();
             fr.ShowDialog();
+            fr.comobosta();
         }
 
         private void guna2Button8_Click(object sender, EventArgs e)
@@ -478,6 +495,85 @@ namespace Gestion_M
             else
             {
                 MessageBox.Show("Veuillez entrer un terme de recherche.");
+            }
+        }
+        
+        AjouterProduit ajouterp = new AjouterProduit();
+
+        private void btn_modifier_Click(object sender, EventArgs e)
+        {
+
+            if (DataGridClient.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    DataGridViewRow selectedRow2 = DatagreadView_Produit.SelectedRows[0];
+                    int idP = Convert.ToInt32( selectedRow2.Cells["idP"].Value);
+                    int  idClient = Convert.ToInt32(selectedRow2.Cells["idClient"].Value);
+                    int  idCat = Convert.ToInt32( selectedRow2.Cells["idCat"].Value);
+                    string status = selectedRow2.Cells["status"].Value.ToString();
+                    string marque = selectedRow2.Cells["marque"].Value.ToString();
+                    DateTime datecreation = Convert.ToDateTime(selectedRow2.Cells["dateCreation"].Value);
+                    DateTime datefin = Convert.ToDateTime(selectedRow2.Cells["dateFin"].Value);
+                    string details = selectedRow2.Cells["details"].Value.ToString();
+                    float prix =  Convert.ToInt32( selectedRow2.Cells["prix"].Value);
+                    string typeProblem = selectedRow2.Cells["typeProblem"].Value.ToString();
+
+
+
+                    using (SqlConnection connection = db.GetConnection())
+                    {
+                        string query = "SELECT * FROM Produit WHERE idP = @idP";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@idP", idP);
+
+                            connection.Open();
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    idP = (int)reader["idP"];
+                                    idClient = (int)reader["idClient"];
+                                    idCat = (int)reader["idCat"];
+                                    status = reader["status"].ToString();
+                                    marque = reader["marque"].ToString() ;
+                                    datecreation = (DateTime)reader["datecreation"];
+                                    datefin = (DateTime)reader["datefin"];
+                                    details = reader["details"].ToString();
+                                    prix = (float)reader["prix"];
+                                    typeProblem = reader["typeProblem"].ToString();
+
+
+                                }
+                            }
+                            
+
+
+                        }
+                    }
+                    ajouterp.idClient = Convert.ToString( idClient);
+                    ajouterp.idCat = Convert.ToString( idCat);
+                    ajouterp.status = status;
+                    ajouterp.marque = marque;
+                    ajouterp.dateFin = Convert.ToString( datefin);
+                    ajouterp.details = details;
+                    ajouterp.prix = Convert.ToString( prix);
+                    
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la récupération de la catégorie : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une catégorie à modifier.");
             }
         }
     }

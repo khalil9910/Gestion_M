@@ -180,6 +180,39 @@ namespace Gestion_M
             }
         }
 
+        private void Inp_Email_Client_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void Inp_Telephone_Client_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inp_Prenom_Client_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_id_clinet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

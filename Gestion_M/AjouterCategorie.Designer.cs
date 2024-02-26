@@ -31,10 +31,10 @@ namespace Gestion_M
         {
             this.label1 = new System.Windows.Forms.Label();
             this.Inp_Nom_Categorie = new Guna.UI2.WinForms.Guna2TextBox();
+            this.id = new System.Windows.Forms.Label();
+            this.modofierBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_enrejerstrer = new Guna.UI2.WinForms.Guna2Button();
-            this.modofierBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.id = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -65,6 +65,35 @@ namespace Gestion_M
             this.Inp_Nom_Categorie.SelectedText = "";
             this.Inp_Nom_Categorie.Size = new System.Drawing.Size(289, 36);
             this.Inp_Nom_Categorie.TabIndex = 11;
+            // 
+            // id
+            // 
+            this.id.AutoSize = true;
+            this.id.Location = new System.Drawing.Point(56, 28);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(15, 13);
+            this.id.TabIndex = 16;
+            this.id.Text = "id";
+            // 
+            // modofierBtn
+            // 
+            this.modofierBtn.BorderRadius = 2;
+            this.modofierBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.modofierBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.modofierBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.modofierBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.modofierBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.modofierBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
+            this.modofierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.modofierBtn.ForeColor = System.Drawing.Color.White;
+            this.modofierBtn.Image = global::Gestion_M.Properties.Resources.telecharger;
+            this.modofierBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.modofierBtn.Location = new System.Drawing.Point(301, 152);
+            this.modofierBtn.Name = "modofierBtn";
+            this.modofierBtn.Size = new System.Drawing.Size(130, 31);
+            this.modofierBtn.TabIndex = 15;
+            this.modofierBtn.Text = "Enregistrer";
+            this.modofierBtn.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -105,35 +134,6 @@ namespace Gestion_M
             this.btn_enrejerstrer.TabIndex = 13;
             this.btn_enrejerstrer.Text = "Enregistrer";
             this.btn_enrejerstrer.Click += new System.EventHandler(this.guna2Button3_Click);
-            // 
-            // modofierBtn
-            // 
-            this.modofierBtn.BorderRadius = 2;
-            this.modofierBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.modofierBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.modofierBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.modofierBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.modofierBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.modofierBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(151)))));
-            this.modofierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.modofierBtn.ForeColor = System.Drawing.Color.White;
-            this.modofierBtn.Image = global::Gestion_M.Properties.Resources.telecharger;
-            this.modofierBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.modofierBtn.Location = new System.Drawing.Point(301, 152);
-            this.modofierBtn.Name = "modofierBtn";
-            this.modofierBtn.Size = new System.Drawing.Size(130, 31);
-            this.modofierBtn.TabIndex = 15;
-            this.modofierBtn.Text = "Enregistrer";
-            this.modofierBtn.Click += new System.EventHandler(this.guna2Button2_Click);
-            // 
-            // id
-            // 
-            this.id.AutoSize = true;
-            this.id.Location = new System.Drawing.Point(56, 28);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(15, 13);
-            this.id.TabIndex = 16;
-            this.id.Text = "id";
             // 
             // AjouterCategorie
             // 
