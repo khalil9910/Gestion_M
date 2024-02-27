@@ -47,7 +47,8 @@ namespace Gestion_M
             this.Enregistrer_produit = new Guna.UI2.WinForms.Guna2Button();
             this.modofierBtn = new Guna.UI2.WinForms.Guna2Button();
             this.Cmd_status = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_status = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_id_produit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Cmd_Client
@@ -218,11 +219,12 @@ namespace Gestion_M
             this.text_type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.text_type.ItemHeight = 30;
             this.text_type.Items.AddRange(new object[] {
-            "Matirial",
+            "Material",
             "Logiciel"});
             this.text_type.Location = new System.Drawing.Point(217, 347);
             this.text_type.Name = "text_type";
             this.text_type.Size = new System.Drawing.Size(302, 36);
+            this.text_type.StartIndex = 1;
             this.text_type.TabIndex = 18;
             // 
             // guna2Button1
@@ -278,11 +280,11 @@ namespace Gestion_M
             this.modofierBtn.ForeColor = System.Drawing.Color.White;
             this.modofierBtn.Image = global::Gestion_M.Properties.Resources.telecharger;
             this.modofierBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.modofierBtn.Location = new System.Drawing.Point(57, 622);
+            this.modofierBtn.Location = new System.Drawing.Point(389, 622);
             this.modofierBtn.Name = "modofierBtn";
             this.modofierBtn.Size = new System.Drawing.Size(130, 31);
             this.modofierBtn.TabIndex = 19;
-            this.modofierBtn.Text = "Enregistrer";
+            this.modofierBtn.Text = "Modifier";
             this.modofierBtn.Click += new System.EventHandler(this.modofierBtn_Click);
             // 
             // Cmd_status
@@ -296,21 +298,30 @@ namespace Gestion_M
             this.Cmd_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.Cmd_status.ItemHeight = 30;
             this.Cmd_status.Items.AddRange(new object[] {
-            "Matirial",
-            "Logiciel"});
+            "En cours",
+            "Terminé",
+            "Annuler"});
             this.Cmd_status.Location = new System.Drawing.Point(217, 550);
             this.Cmd_status.Name = "Cmd_status";
             this.Cmd_status.Size = new System.Drawing.Size(302, 36);
             this.Cmd_status.TabIndex = 21;
             // 
-            // guna2HtmlLabel3
+            // lbl_status
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(68, 560);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(39, 15);
-            this.guna2HtmlLabel3.TabIndex = 20;
-            this.guna2HtmlLabel3.Text = "Status :";
+            this.lbl_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_status.Location = new System.Drawing.Point(68, 560);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(39, 15);
+            this.lbl_status.TabIndex = 20;
+            this.lbl_status.Text = "Status :";
+            // 
+            // lbl_id_produit
+            // 
+            this.lbl_id_produit.AutoSize = true;
+            this.lbl_id_produit.Location = new System.Drawing.Point(12, 23);
+            this.lbl_id_produit.Name = "lbl_id_produit";
+            this.lbl_id_produit.Size = new System.Drawing.Size(0, 13);
+            this.lbl_id_produit.TabIndex = 22;
             // 
             // AjouterProduit
             // 
@@ -319,8 +330,9 @@ namespace Gestion_M
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(598, 680);
+            this.Controls.Add(this.lbl_id_produit);
             this.Controls.Add(this.Cmd_status);
-            this.Controls.Add(this.guna2HtmlLabel3);
+            this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.modofierBtn);
             this.Controls.Add(this.text_type);
             this.Controls.Add(this.label1);
@@ -368,6 +380,7 @@ namespace Gestion_M
         private Guna.UI2.WinForms.Guna2ComboBox text_type;
         private Guna.UI2.WinForms.Guna2Button modofierBtn;
         private Guna.UI2.WinForms.Guna2ComboBox Cmd_status;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_status;
+        private System.Windows.Forms.Label lbl_id_produit;
     }
 }

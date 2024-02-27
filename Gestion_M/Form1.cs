@@ -287,10 +287,14 @@ namespace Gestion_M
         {
 
         }
+        
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             AjouterProduit fr = new AjouterProduit();
+
+            fr.cmdstatusvisible();
+           
             fr.ShowDialog();
             fr.comobosta();
         }
@@ -503,68 +507,82 @@ namespace Gestion_M
         private void btn_modifier_Click(object sender, EventArgs e)
         {
 
-            if (DataGridClient.SelectedRows.Count > 0)
+            if (DatagreadView_Produit.SelectedRows.Count > 0)
             {
                 try
                 {
                     DataGridViewRow selectedRow2 = DatagreadView_Produit.SelectedRows[0];
-                    int idP = Convert.ToInt32( selectedRow2.Cells["idP"].Value);
-                    int  idClient = Convert.ToInt32(selectedRow2.Cells["idClient"].Value);
-                    int  idCat = Convert.ToInt32( selectedRow2.Cells["idCat"].Value);
-                    string status = selectedRow2.Cells["status"].Value.ToString();
-                    string marque = selectedRow2.Cells["marque"].Value.ToString();
-                    DateTime datecreation = Convert.ToDateTime(selectedRow2.Cells["dateCreation"].Value);
-                    DateTime datefin = Convert.ToDateTime(selectedRow2.Cells["dateFin"].Value);
-                    string details = selectedRow2.Cells["details"].Value.ToString();
-                    float prix =  Convert.ToInt32( selectedRow2.Cells["prix"].Value);
-                    string typeProblem = selectedRow2.Cells["typeProblem"].Value.ToString();
+                    int idP, idClient, idCat;
+                    string status, marque, details, typeProblem;
+                    DateTime datecreation, datefin;
+                    float prix;
 
-
-
-                    using (SqlConnection connection = db.GetConnection())
+                    if (selectedRow2.Cells["idP"].Value != null && selectedRow2.Cells["idClient"].Value != null &&
+                        selectedRow2.Cells["idCat"].Value != null && selectedRow2.Cells["status"].Value != null &&
+                        selectedRow2.Cells["marque"].Value != null && selectedRow2.Cells["dateCreation"].Value != null &&
+                        selectedRow2.Cells["dateFin"].Value != null && selectedRow2.Cells["details"].Value != null &&
+                        selectedRow2.Cells["prix"].Value != null && selectedRow2.Cells["typeProblem"].Value != null)
                     {
-                        string query = "SELECT * FROM Produit WHERE idP = @idP";
+                        idP = Convert.ToInt32(selectedRow2.Cells["idP"].Value);
+                        idClient = Convert.ToInt32(selectedRow2.Cells["idClient"].Value);
+                        idCat = Convert.ToInt32(selectedRow2.Cells["idCat"].Value);
+                        status = selectedRow2.Cells["status"].Value.ToString();
+                        marque = selectedRow2.Cells["marque"].Value.ToString();
+                        datecreation = Convert.ToDateTime(selectedRow2.Cells["dateCreation"].Value);
+                        datefin = Convert.ToDateTime(selectedRow2.Cells["dateFin"].Value);
+                        details = selectedRow2.Cells["details"].Value.ToString();
+                        float.TryParse(selectedRow2.Cells["prix"].Value.ToString(), out prix);
+                        typeProblem = selectedRow2.Cells["typeProblem"].Value.ToString();
 
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (SqlConnection connection = db.GetConnection())
                         {
-                            command.Parameters.AddWithValue("@idP", idP);
+                            string query = "SELECT idP,idClient,idCat,status,marque,dateCreation,dateFin,details,prix,typeProblem FROM Produit WHERE idP = @idP";
 
-                            connection.Open();
-
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            using (SqlCommand command = new SqlCommand(query, connection))
                             {
-                                if (reader.Read())
+                                command.Parameters.AddWithValue("@idP", idP);
+
+                                connection.Open();
+
+                                using (SqlDataReader reader = command.ExecuteReader())
                                 {
-                                    idP = (int)reader["idP"];
-                                    idClient = (int)reader["idClient"];
-                                    idCat = (int)reader["idCat"];
-                                    status = reader["status"].ToString();
-                                    marque = reader["marque"].ToString() ;
-                                    datecreation = (DateTime)reader["datecreation"];
-                                    datefin = (DateTime)reader["datefin"];
-                                    details = reader["details"].ToString();
-                                    prix = (float)reader["prix"];
-                                    typeProblem = reader["typeProblem"].ToString();
-
-
+                                    if (reader.Read())
+                                    {
+                                        idP = (int)reader["idP"];
+                                        idClient = (int)reader["idClient"];
+                                        idCat = (int)reader["idCat"];
+                                        status = reader["status"].ToString();
+                                        marque = reader["marque"].ToString();
+                                        datecreation = (DateTime)reader["dateCreation"];
+                                        datefin = (DateTime)reader["dateFin"];
+                                        details = reader["details"].ToString();
+                                        float.TryParse(reader["prix"].ToString(), out prix);
+                                        typeProblem = reader["typeProblem"].ToString();
+                                    }
                                 }
                             }
-                            
-
-
                         }
+
+                        // Assuming `ajouterp` is an instance of your class where you want to assign these values
+                        ajouterp.status = status;
+                        ajouterp.marque = marque;
+                        ajouterp.details = details;
+                        ajouterp.idP = Convert.ToString(idP);
+                        ajouterp.idClient = Convert.ToString(idClient);
+                        ajouterp.idCat = Convert.ToString(idCat);
+                        ajouterp.status = status;
+                        ajouterp.marque = marque;
+                        ajouterp.dateFin = Convert.ToString(datefin);
+                        ajouterp.details = details;
+                        ajouterp.prix = Convert.ToString(prix);
+                        ajouterp.mofifiervisible();
+                        ajouterp.ShowDialog();
+                        // assign other properties as needed
                     }
-                    ajouterp.idClient = Convert.ToString( idClient);
-                    ajouterp.idCat = Convert.ToString( idCat);
-                    ajouterp.status = status;
-                    ajouterp.marque = marque;
-                    ajouterp.dateFin = Convert.ToString( datefin);
-                    ajouterp.details = details;
-                    ajouterp.prix = Convert.ToString( prix);
-                    
-
-
-
+                    else
+                    {
+                        MessageBox.Show("Une ou plusieurs colonnes sélectionnées contiennent des valeurs nulles.");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -574,6 +592,56 @@ namespace Gestion_M
             else
             {
                 MessageBox.Show("Veuillez sélectionner une catégorie à modifier.");
+            }
+
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if (DatagreadView_Produit.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = DatagreadView_Produit.SelectedRows[0];
+                int index = selectedRow.Index;
+
+                int entityId = Convert.ToInt32(selectedRow.Cells["idP"].Value);
+
+                using (SqlConnection connection = db.GetConnection())
+                {
+                    try
+                    {
+                        string query = "DELETE FROM Produit  WHERE idP  = @Produit ";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Produit", entityId);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Produit supprimée avec succès!");
+                            DatagreadView_Produit.Rows.RemoveAt(index);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erreur lors de la suppression de Produit.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erreur lors de la suppression de l'entité :" + ex.Message);
+                    }
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une entité à supprimer.");
             }
         }
     }

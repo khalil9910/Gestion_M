@@ -28,6 +28,11 @@ namespace Gestion_M
             get { return Cmd_Client.Text; }
             set { Cmd_Client.SelectedValue = value; }
         }
+        public string idP
+        {
+            get { return lbl_id_produit.Text; }
+            set { lbl_id_produit.Text = value; }
+        }
         public string idCat
         {
             get { return cmd_categorie.Text; }
@@ -73,6 +78,22 @@ namespace Gestion_M
         public void comobosta()
         {
             Cmd_status.Visible = false;
+        }
+        public void cmdstatusvisible()
+        {
+            Cmd_status.Visible = false;
+            lbl_status.Visible = false;
+            modofierBtn.Visible = false;
+
+
+
+        }
+        public void mofifiervisible()
+        {
+            Cmd_status.Visible = true;
+            lbl_status.Visible = true;
+            modofierBtn.Visible = true;
+            Enregistrer_produit.Visible = false;
         }
         private void AjouterProduit_Load(object sender, EventArgs e)
         {
@@ -200,7 +221,10 @@ namespace Gestion_M
                     command.Parameters.AddWithValue("@prix", prix);
                     command.Parameters.AddWithValue("@typeProblem", type);
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show("Produit ajouté avec succès.");
+                    Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    existingForm1?.AfficherDonneesProduit();
+                    AffNotification("Succes", "Enregistre avec succes ");
+
                 }
                 catch (Exception ex)
                 {
@@ -208,9 +232,15 @@ namespace Gestion_M
                 }
             }
         }
+        private void AffNotification(string type, string Message)
+        {
+            ToastForm Tost = new ToastForm(type, Message);
+            Tost.Show();
+        }
 
         private void modofierBtn_Click(object sender, EventArgs e)
         {
+            int idP = Convert.ToInt32(lbl_id_produit.Text);
             int idClient = (int)Cmd_Client.SelectedValue;
             int idCat = (int)cmd_categorie.SelectedValue;
             string marque = text_marque.Text;
@@ -224,19 +254,19 @@ namespace Gestion_M
 
 
 
-            Update(idClient, idCat, status, marque, date, details, prix, typeProblem);
+            Update(idP,idClient, idCat, status, marque, date, details, prix, typeProblem);
         }
+        
 
-        public void Update( int  idClient, int idCat,string status,  string marque, DateTime dateFin,string details,float prix,string typeProblem)
+        public void Update(int idP, int  idClient, int idCat,string status,  string marque, DateTime dateFin,string details,float prix,string typeProblem)
         {
 
             using (SqlConnection connection = db.GetConnection())
             {
                 connection.Open();
-                string query = "UPDATE Produit SET  idClient = @idClient, idCat = @idCat, status =@status,marque=@marque,dateFin=@dateFin,prix=@prix,details=@details,typeProblem=@typeProblem WHERE idP = @idP";
+                string query = "UPDATE Produit SET idClient = @idClient, idCat = @idCat, status = @status, marque = @marque, dateFin = @dateFin, prix = @prix, details = @details, typeProblem = @typeProblem WHERE idP = @idP";
                 SqlCommand command = new SqlCommand(query, connection);
-               
-                command.Parameters.AddWithValue("@idClient", idClient);
+                command.Parameters.AddWithValue("@idClient", idClient); // Corrected parameter name
                 command.Parameters.AddWithValue("@idCat", idCat);
                 command.Parameters.AddWithValue("@marque", marque);
                 command.Parameters.AddWithValue("@status", status);
@@ -244,10 +274,22 @@ namespace Gestion_M
                 command.Parameters.AddWithValue("@details", details);
                 command.Parameters.AddWithValue("@prix", prix);
                 command.Parameters.AddWithValue("@typeProblem", typeProblem);
-                
+                command.Parameters.AddWithValue("@idP", idP); // Added idP parameter
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    existingForm1?.AfficherDonneesProduit();
+                    AffNotification("Succes", "Enregistrement mis à jour avec succès !");
+                    
 
-
+                }
+                else
+                {
+                    AffNotification("Error", "La mise à jour a échoué !");
+                }
             }
+
         }
     }
 } 
