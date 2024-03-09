@@ -77,7 +77,7 @@ namespace Gestion_M
 
             if (existingForm1 != null)
             {
-                existingForm1.AfficherDonneesClients();
+                existingForm1.LoadClients();
             }
         }
         private void AffNotification(string type, string Message)
@@ -116,7 +116,7 @@ namespace Gestion_M
 
                 }
                 Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                existingForm1?.AfficherDonneesClients();
+                existingForm1?.LoadClients();
                 AffNotification("Succes", "Enregistre avec succes ");
                
             }
@@ -168,7 +168,7 @@ namespace Gestion_M
                 if (rowsAffected > 0)
                 {
                     Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                    existingForm1?.AfficherDonneesClients();
+                    existingForm1?.LoadClients();
                     AffNotification("Succes", "Enregistrement mis à jour avec succès !");
                    
 

@@ -57,7 +57,7 @@ namespace Gestion_M
         
             if (existingForm1 != null)
             {
-                existingForm1.DisplayCategories();
+                existingForm1.LoadCategories();
             }
         }
 
@@ -85,7 +85,7 @@ namespace Gestion_M
                         {
                             MessageBox.Show("Catégorie ajoutée avec succès!");
                             Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                            existingForm1?.DisplayCategories(); 
+                            existingForm1?.LoadCategories(); 
                             Inp_Nom_Categorie.Clear();
                         }
                         else
@@ -137,7 +137,7 @@ namespace Gestion_M
                         {
                             MessageBox.Show("Catégorie mise à jour avec succès!");
                             Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                            existingForm1?.DisplayCategories();
+                            existingForm1?.LoadCategories();
                             Inp_Nom_Categorie.Clear();
                         }
                         else

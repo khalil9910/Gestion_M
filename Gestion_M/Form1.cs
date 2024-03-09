@@ -14,43 +14,104 @@ namespace Gestion_M
     public partial class Form1 : Form
     {
         public AjouterCategorie form2;
-     
+
         public Form1()
         {
             form2 = new AjouterCategorie();
 
             InitializeComponent();
-           
+
 
         }
         Db db = new Db();
 
 
 
-       
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            DisplayCategories();
-            AfficherDonneesClients();
+            LoadProblems();
+
+            // DisplayCategories();
+            //AfficherDonneesClients();
+            LoadClients();
             AfficherDonneesProduit();
-
-
+            LoadCategories();
+            AfficherDonneesProduitStatus();
 
         }
+
+        public void AfficherDonneesProduitStatus()
+        {
+            string query = "SELECT * FROM Produit WHERE status = 'Terminé'";
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = db.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.Fill(dt);
+
+                    maintenance.DataSource = null;
+                    maintenance.Rows.Clear();
+                    maintenance.Columns.Clear();
+                    maintenance.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur : " + ex.Message);
+                }
+            }
+        }
+
+
+        private void ReloadDataGridView(DateTime selectedDate)
+        {
+            string query = "SELECT c.nom AS Nom_Client, cat.libelle AS Nom_Categorie,p.idP,p.status,p.marque,p.details,p.prix,p.typeProblem,p.dateFin,p.dateCreation " +
+                               "FROM Produit p " +
+                               "INNER JOIN Client c ON p.idClient = c.idClient " +
+                               "INNER JOIN Categorie cat ON p.idCat = cat.idCat WHERE CONVERT(date, dateCreation) = @selectedDate";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@selectedDate", selectedDate.Date);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        DatagreadView_Produit.DataSource = dt;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while accessing the database: " + ex.Message);
+                    }
+                }
+            }
+        }
+
 
         public void AfficherDonneesProduit()
         {
             using (SqlConnection connection = db.GetConnection())
             {
-                string query = "SELECT * FROM Produit";
+                string query = "SELECT  c.nom AS Nom_Client, cat.libelle AS Nom_Categorie,p.idP,p.status,p.marque,p.details,p.prix,p.typeProblem,p.dateFin,p.dateCreation " +
+                               "FROM Produit p " +
+                               "INNER JOIN Client c ON p.idClient = c.idClient " +
+                               "INNER JOIN Categorie cat ON p.idCat = cat.idCat";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 DatagreadView_Produit.DataSource = table;
-
             }
-
         }
+
 
         private void SearchClient(string searchTerm)
         {
@@ -73,7 +134,8 @@ namespace Gestion_M
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur lors de la recherche de catégories : " + ex.Message);
+                    //MessageBox.Show("Erreur lors de la recherche de catégories : " + ex.Message);
+                    LoadClients();
                 }
             }
         }
@@ -85,7 +147,7 @@ namespace Gestion_M
             {
                 try
                 {
-                    connection.Open(); 
+                    connection.Open();
 
                     string query = "SELECT * FROM Categorie WHERE libelle LIKE @searchTerm";
                     SqlCommand command = new SqlCommand(query, connection);
@@ -95,7 +157,7 @@ namespace Gestion_M
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                   
+
                     Categorie.DataSource = dt;
                 }
                 catch (Exception ex)
@@ -105,31 +167,8 @@ namespace Gestion_M
             }
         }
 
-        public void AfficherDonneesClients()
-        {
-            using (SqlConnection connection = db.GetConnection())
-            {
-                string query = "SELECT * FROM Client";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                DataGridClient.DataSource = table;
 
-            }
 
-        }
-        public void DisplayCategories()
-        {
-            using (SqlConnection connection = db.GetConnection())
-            {
-                string query = "SELECT * FROM Categorie";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                Categorie.DataSource = table;
-              
-            }
-        }
 
         private void AffNotification(string type, string Message)
         {
@@ -159,10 +198,31 @@ namespace Gestion_M
         {
 
         }
+        public void LoadClients()
+        {
+            try
+            {
+                using (SqlConnection connection = db.GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT idClient,nom ,prenom,email,telephone FROM Client WHERE Visible = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        DataGridClient.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des clients : " + ex.Message);
+            }
+        }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-
             if (DataGridClient.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = DataGridClient.SelectedRows[0];
@@ -174,26 +234,26 @@ namespace Gestion_M
                 {
                     try
                     {
-                        string query = "DELETE FROM Client  WHERE idClient  = @Client ";
+                        string query = "UPDATE Client SET Visible = 0 WHERE idClient = @ClientId";
                         SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@Client", entityId);
+                        command.Parameters.AddWithValue("@ClientId", entityId);
 
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Client supprimée avec succès!");
+                            MessageBox.Show("Client caché avec succès!");
                             DataGridClient.Rows.RemoveAt(index);
                         }
                         else
                         {
-                            MessageBox.Show("Erreur lors de la suppression de Client.");
+                            MessageBox.Show("Erreur lors de la cachée du client.");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Erreur lors de la suppression de l'entité :"+ex.Message);
+                        MessageBox.Show("Erreur lors de la cachée du client : " + ex.Message);
                     }
                     finally
                     {
@@ -206,9 +266,10 @@ namespace Gestion_M
             }
             else
             {
-                MessageBox.Show("Veuillez sélectionner une entité à supprimer.");
+                MessageBox.Show("Veuillez sélectionner un client à cacher.");
             }
         }
+
         AjouterClient AjouterClient = new AjouterClient();
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -228,7 +289,7 @@ namespace Gestion_M
                     string Telephone_client = selectedRow2.Cells["telephone"].Value.ToString();
 
                     int id_conversion = int.Parse(Id_client);
-                
+
 
                     using (SqlConnection connection = db.GetConnection())
                     {
@@ -260,7 +321,7 @@ namespace Gestion_M
                     AjouterClient.Telephone_clinet = Telephone_client;
                     AjouterClient.buttonClents();
                     AjouterClient.ShowDialog();
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -280,41 +341,44 @@ namespace Gestion_M
             AjouterClient fr = new AjouterClient();
             fr.renameboutton(false);
             fr.ShowDialog();
-            
+
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
-        
+
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             AjouterProduit fr = new AjouterProduit();
 
             fr.cmdstatusvisible();
-           
+
             fr.ShowDialog();
             fr.comobosta();
         }
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
-       
+
             form2.HideLabel();
             form2.button();
 
 
             form2.ShowDialog();
-            
-            
+
+
 
         }
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            DateTime selectedDate = date.Value.Date;
 
+
+            ReloadDataGridView(selectedDate);
         }
 
         private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,6 +391,29 @@ namespace Gestion_M
 
             //timer1.Start();
         }
+        public void LoadCategories()
+        {
+            try
+            {
+                using (SqlConnection connection = db.GetConnection())
+                {
+                    connection.Open();
+                    string query = "SELECT idCat, libelle FROM Categorie WHERE Visible = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        Categorie.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des catégories : " + ex.Message);
+            }
+        }
+
 
         private void guna2Button9_Click(object sender, EventArgs e)
         {
@@ -337,62 +424,61 @@ namespace Gestion_M
 
                 int categoryId = Convert.ToInt32(selectedRow.Cells["idCat"].Value);
 
-                using (SqlConnection connection = db.GetConnection())
+                DialogResult result = MessageBox.Show("Êtes-vous sûr de vouloir cacher cette catégorie?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
                     try
                     {
-                        string query = "DELETE FROM Categorie WHERE idCat = @idCat";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@idCat", categoryId);
-
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        using (SqlConnection connection = db.GetConnection())
                         {
-                            MessageBox.Show("Catégorie supprimée avec succès!");
-                            this.Categorie.Rows.RemoveAt(index); 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Erreur lors de la suppression de la catégorie.");
+                            connection.Open();
+                            string query = "UPDATE Categorie SET Visible = 0 WHERE idCat = @CategoryId";
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@CategoryId", categoryId);
+                                int rowsAffected = command.ExecuteNonQuery();
+                                if (rowsAffected > 0)
+                                {
+                                    MessageBox.Show("Catégorie cachée avec succès!");
+
+                                    Categorie.Rows.RemoveAt(index);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("La catégorie n'a pas été trouvée.");
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Erreur lors de la suppression de la catégorie : " + ex.Message);
-                    }
-                    finally
-                    {
-                        if (connection.State == ConnectionState.Open)
-                        {
-                            connection.Close();
-                        }
+                        MessageBox.Show("Erreur lors de la cachée de la catégorie : " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Veuillez sélectionner une catégorie à supprimer.");
+                MessageBox.Show("Veuillez sélectionner une catégorie à cacher.");
             }
         }
+
 
 
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             form2.buttonEr();
-        
+
             if (Categorie.SelectedRows.Count > 0)
             {
                 try
                 {
-                    
+
                     DataGridViewRow selectedRow = Categorie.SelectedRows[0];
                     string categoryId = selectedRow.Cells["idCat"].Value.ToString();
                     string categoryName = selectedRow.Cells["libelle"].Value.ToString();
 
-                    
+
                     using (SqlConnection connection = db.GetConnection())
                     {
                         string query = "SELECT libelle FROM Categorie WHERE idCat = @idCat";
@@ -407,14 +493,14 @@ namespace Gestion_M
                             {
                                 if (reader.Read())
                                 {
-                                   
+
                                     categoryName = reader["libelle"].ToString();
                                 }
                             }
                         }
                     }
 
-                   
+
                     AjouterCategorie form2 = new AjouterCategorie();
                     form2.TextBoxText = categoryName;
                     form2.label = categoryId;
@@ -428,36 +514,177 @@ namespace Gestion_M
             }
             else
             {
-               
+
                 MessageBox.Show("Veuillez sélectionner une catégorie à modifier.");
             }
-           
+
+        }
+
+
+        private void LoadProblems()
+        {
+            string query = "SELECT DISTINCT typeProblem FROM Produit";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Probelem.Items.Add(reader["typeProblem"].ToString());
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while accessing the database: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void ReloadDataGridView(string selectedProblem)
+        {
+            string query = "SELECT * FROM Produit WHERE typeProblem = @selectedProblem";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@selectedProblem", selectedProblem);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        DatagreadView_Produit.DataSource = dt;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while accessing the database: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void LoadStatusForProblem(string selectedProblem)
+        {
+            Status.Items.Clear();
+
+            if (selectedProblem.Equals("TOUS", StringComparison.OrdinalIgnoreCase))
+            {
+                ReloadDataGridView("TOUS", "TOUS");
+                return;
+            }
+
+            string query = "SELECT DISTINCT status FROM Produit WHERE typeProblem = @selectedProblem";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@selectedProblem", selectedProblem);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Status.Items.Add(reader["status"].ToString());
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while accessing the database: " + ex.Message);
+                    }
+                }
+            }
         }
 
 
 
+        private void ReloadDataGridView(string selectedStatus, string selectedProblem)
+        {
+            string query;
+            if (selectedStatus.Equals("TOUS", StringComparison.OrdinalIgnoreCase))
+            {
+                query = "SELECT c.nom AS Nom_Client, cat.libelle AS Nom_Categorie,p.idP,p.status,p.marque,p.details,p.prix,p.typeProblem,p.dateFin,p.dateCreation " +
+                        "FROM Produit p " +
+                        "INNER JOIN Client c ON p.idClient = c.idClient " +
+                        "INNER JOIN Categorie cat ON p.idCat = cat.idCat "
+                        ;
+            }
+            else
+            {
+                query = "SELECT c.nom AS Nom_Client, cat.libelle AS Nom_Categorie,p.idP,p.status,p.marque,p.details,p.prix,p.typeProblem,p.dateFin,p.dateCreation " +
+                        "FROM Produit p " +
+                        "INNER JOIN Client c ON p.idClient = c.idClient " +
+                        "INNER JOIN Categorie cat ON p.idCat = cat.idCat " +
+                        "WHERE status = @status AND typeProblem = @selectedProblem";
+            }
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@status", selectedStatus);
+                    command.Parameters.AddWithValue("@selectedProblem", selectedProblem);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        DatagreadView_Produit.DataSource = dt;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while accessing the database: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+
         private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Probelem.SelectedItem != null)
             {
-
+                string selectedProblem = Probelem.SelectedItem.ToString();
+                LoadStatusForProblem(selectedProblem);
             }
+        }
 
-            private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Status.SelectedItem != null && Probelem.SelectedItem != null)
             {
-
+                string selectedStatus = Status.SelectedItem.ToString();
+                string selectedProblem = Probelem.SelectedItem.ToString();
+                ReloadDataGridView(selectedStatus, selectedProblem);
             }
+        }
 
-            private void tabPage4_Click(object sender, EventArgs e)
-            {
 
-            }
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
 
-            private void guna2Button9_Click_1(object sender, EventArgs e)
-            {
-            }
+        }
+
+        private void guna2Button9_Click_1(object sender, EventArgs e)
+        {
+        }
 
         private void Categorie_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void guna2Button11_Click(object sender, EventArgs e)
@@ -470,13 +697,13 @@ namespace Gestion_M
             }
             else
             {
-                MessageBox.Show("Veuillez entrer un terme de recherche.");
+                LoadCategories();
             }
         }
         private void DataGridClient_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
-            }
+        }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
@@ -498,45 +725,51 @@ namespace Gestion_M
             }
             else
             {
-                MessageBox.Show("Veuillez entrer un terme de recherche.");
+                // MessageBox.Show("Veuillez entrer un terme de recherche.");
+                LoadClients();
             }
         }
-        
+
         AjouterProduit ajouterp = new AjouterProduit();
 
         private void btn_modifier_Click(object sender, EventArgs e)
         {
-
             if (DatagreadView_Produit.SelectedRows.Count > 0)
             {
                 try
                 {
-                    DataGridViewRow selectedRow2 = DatagreadView_Produit.SelectedRows[0];
-                    int idP, idClient, idCat;
-                    string status, marque, details, typeProblem;
-                    DateTime datecreation, datefin;
-                    float prix;
+                    DataGridViewRow selectedRow = DatagreadView_Produit.SelectedRows[0];
 
-                    if (selectedRow2.Cells["idP"].Value != null && selectedRow2.Cells["idClient"].Value != null &&
-                        selectedRow2.Cells["idCat"].Value != null && selectedRow2.Cells["status"].Value != null &&
-                        selectedRow2.Cells["marque"].Value != null && selectedRow2.Cells["dateCreation"].Value != null &&
-                        selectedRow2.Cells["dateFin"].Value != null && selectedRow2.Cells["details"].Value != null &&
-                        selectedRow2.Cells["prix"].Value != null && selectedRow2.Cells["typeProblem"].Value != null)
+                    if (selectedRow.Cells["idP"].Value != null &&
+                        selectedRow.Cells["Nom_Client"].Value != null &&
+                        selectedRow.Cells["Nom_Categorie"].Value != null &&
+                        selectedRow.Cells["status"].Value != null &&
+                        selectedRow.Cells["marque"].Value != null &&
+                        selectedRow.Cells["dateCreation"].Value != null &&
+                        selectedRow.Cells["dateFin"].Value != null &&
+                        selectedRow.Cells["details"].Value != null &&
+                        selectedRow.Cells["prix"].Value != null &&
+                        selectedRow.Cells["typeProblem"].Value != null)
                     {
-                        idP = Convert.ToInt32(selectedRow2.Cells["idP"].Value);
-                        idClient = Convert.ToInt32(selectedRow2.Cells["idClient"].Value);
-                        idCat = Convert.ToInt32(selectedRow2.Cells["idCat"].Value);
-                        status = selectedRow2.Cells["status"].Value.ToString();
-                        marque = selectedRow2.Cells["marque"].Value.ToString();
-                        datecreation = Convert.ToDateTime(selectedRow2.Cells["dateCreation"].Value);
-                        datefin = Convert.ToDateTime(selectedRow2.Cells["dateFin"].Value);
-                        details = selectedRow2.Cells["details"].Value.ToString();
-                        float.TryParse(selectedRow2.Cells["prix"].Value.ToString(), out prix);
-                        typeProblem = selectedRow2.Cells["typeProblem"].Value.ToString();
+                        int idP = Convert.ToInt32(selectedRow.Cells["idP"].Value);
+                        string idClient = selectedRow.Cells["Nom_Client"].Value.ToString();
+                        string idCat = selectedRow.Cells["Nom_Categorie"].Value.ToString();
+                        string status = selectedRow.Cells["status"].Value.ToString();
+                        string marque = selectedRow.Cells["marque"].Value.ToString();
+                        DateTime datecreation = Convert.ToDateTime(selectedRow.Cells["dateCreation"].Value);
+                        DateTime datefin = Convert.ToDateTime(selectedRow.Cells["dateFin"].Value);
+                        string details = selectedRow.Cells["details"].Value.ToString();
+                        float prix;
+                        float.TryParse(selectedRow.Cells["prix"].Value.ToString(), out prix);
+                        string typeProblem = selectedRow.Cells["typeProblem"].Value.ToString();
 
                         using (SqlConnection connection = db.GetConnection())
                         {
-                            string query = "SELECT idP,idClient,idCat,status,marque,dateCreation,dateFin,details,prix,typeProblem FROM Produit WHERE idP = @idP";
+                            string query = "SELECT c.nom AS Nom_Client, cat.libelle AS Nom_Categorie, p.idP, p.status, p.marque, p.details, p.prix, p.typeProblem, p.dateFin, p.dateCreation " +
+                                           "FROM Produit p " +
+                                           "INNER JOIN Client c ON p.idClient = c.idClient " +
+                                           "INNER JOIN Categorie cat ON p.idCat = cat.idCat " +
+                                           "WHERE p.idP = @idP";
 
                             using (SqlCommand command = new SqlCommand(query, connection))
                             {
@@ -548,9 +781,6 @@ namespace Gestion_M
                                 {
                                     if (reader.Read())
                                     {
-                                        idP = (int)reader["idP"];
-                                        idClient = (int)reader["idClient"];
-                                        idCat = (int)reader["idCat"];
                                         status = reader["status"].ToString();
                                         marque = reader["marque"].ToString();
                                         datecreation = (DateTime)reader["dateCreation"];
@@ -558,26 +788,32 @@ namespace Gestion_M
                                         details = reader["details"].ToString();
                                         float.TryParse(reader["prix"].ToString(), out prix);
                                         typeProblem = reader["typeProblem"].ToString();
+                                        idClient = reader["Nom_Client"].ToString();
+                                        idCat = reader["Nom_Categorie"].ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Produit non trouvé dans la base de données.");
+                                        return;
                                     }
                                 }
                             }
                         }
 
-                        // Assuming `ajouterp` is an instance of your class where you want to assign these values
+                        AjouterProduit ajouterp = new AjouterProduit();
                         ajouterp.status = status;
                         ajouterp.marque = marque;
                         ajouterp.details = details;
-                        ajouterp.idP = Convert.ToString(idP);
-                        ajouterp.idClient = Convert.ToString(idClient);
-                        ajouterp.idCat = Convert.ToString(idCat);
+                        ajouterp.idP = idP.ToString();
+                        ajouterp.idClient = idClient;
+                        ajouterp.idCat = idCat;
                         ajouterp.status = status;
                         ajouterp.marque = marque;
-                        ajouterp.dateFin = Convert.ToString(datefin);
+                        ajouterp.dateFin = datefin.ToString();
                         ajouterp.details = details;
-                        ajouterp.prix = Convert.ToString(prix);
+                        ajouterp.prix = prix.ToString();
                         ajouterp.mofifiervisible();
                         ajouterp.ShowDialog();
-                        // assign other properties as needed
                     }
                     else
                     {
@@ -586,15 +822,15 @@ namespace Gestion_M
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur lors de la récupération de la catégorie : " + ex.Message);
+                    MessageBox.Show("Erreur lors de la récupération : " + ex.Message);
                 }
             }
             else
             {
                 MessageBox.Show("Veuillez sélectionner une catégorie à modifier.");
             }
-
         }
+
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
@@ -644,11 +880,47 @@ namespace Gestion_M
                 MessageBox.Show("Veuillez sélectionner une entité à supprimer.");
             }
         }
+
+        private void imprimer_Click(object sender, EventArgs e)
+        {
+            Facture f = new Facture();
+            f.ShowDialog();
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+               
+                if (maintenance.SelectedRows.Count > 0)
+                {
+                    int selectedRowIndex = maintenance.SelectedRows[0].Index;
+                    string idProduit = maintenance.Rows[selectedRowIndex].Cells["idP"].Value.ToString();
+
+                    string query = "SELECT p.idP, p.marque, p.prix, c.nom AS Nom_Client " +
+                                   "FROM Produit p " +
+                                   "INNER JOIN Client c ON p.idClient = c.idClient " +
+                                   $"WHERE p.idP = {idProduit}";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "Produit");
+
+                    FactutreClient cr = new FactutreClient();
+                    cr.SetDataSource(ds);
+
+                    f.crystalReportViewer2.ReportSource = cr;
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row in the DataGridView first.");
+                }
+            }
+        }
+
+
+
+
+
+
+
     }
-
-
-
-
-        
-    }
+}
     

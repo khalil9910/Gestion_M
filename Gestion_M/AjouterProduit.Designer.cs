@@ -86,7 +86,7 @@ namespace Gestion_M
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(85, 105);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(82, 105);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(54, 15);
             this.guna2HtmlLabel1.TabIndex = 4;
@@ -95,7 +95,7 @@ namespace Gestion_M
             // guna2HtmlLabel2
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(90, 168);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(87, 168);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(45, 15);
             this.guna2HtmlLabel2.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace Gestion_M
             // guna2HtmlLabel4
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(68, 357);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(65, 357);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(88, 15);
             this.guna2HtmlLabel4.TabIndex = 9;
@@ -153,7 +153,7 @@ namespace Gestion_M
             // guna2HtmlLabel5
             // 
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(92, 247);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(89, 247);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(41, 15);
             this.guna2HtmlLabel5.TabIndex = 10;
@@ -170,7 +170,7 @@ namespace Gestion_M
             // guna2HtmlLabel6
             // 
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(99, 433);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(96, 433);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(26, 15);
             this.guna2HtmlLabel6.TabIndex = 12;
@@ -193,7 +193,7 @@ namespace Gestion_M
             // guna2HtmlLabel7
             // 
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(88, 500);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(85, 500);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(49, 15);
             this.guna2HtmlLabel7.TabIndex = 14;
@@ -202,7 +202,7 @@ namespace Gestion_M
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 33);
+            this.label1.Location = new System.Drawing.Point(90, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 17;
@@ -309,7 +309,7 @@ namespace Gestion_M
             // lbl_status
             // 
             this.lbl_status.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_status.Location = new System.Drawing.Point(68, 560);
+            this.lbl_status.Location = new System.Drawing.Point(90, 562);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(39, 15);
             this.lbl_status.TabIndex = 20;

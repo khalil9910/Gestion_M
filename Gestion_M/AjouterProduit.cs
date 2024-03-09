@@ -184,7 +184,11 @@ namespace Gestion_M
             }
         }
 
-
+        public void load()
+        {
+            Form1 fr = new Form1();
+            fr.Refresh();
+        }
 
         private void Enregistrer_produit_Click(object sender, EventArgs e)
         {
@@ -196,10 +200,6 @@ namespace Gestion_M
             string date = text_date.Text;
             string prix = text_prix.Text;
             string type = text_type.Text;
-
-
-
-
 
 
             using (SqlConnection connection = db.GetConnection())
@@ -223,6 +223,10 @@ namespace Gestion_M
                     int rowsAffected = command.ExecuteNonQuery();
                     Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
                     existingForm1?.AfficherDonneesProduit();
+                    Form1 ton = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    ton?.Refresh();
+                    Form1 ton1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    ton1?.AfficherDonneesProduitStatus();
                     AffNotification("Succes", "Enregistre avec succes ");
 
                 }
@@ -266,7 +270,7 @@ namespace Gestion_M
                 connection.Open();
                 string query = "UPDATE Produit SET idClient = @idClient, idCat = @idCat, status = @status, marque = @marque, dateFin = @dateFin, prix = @prix, details = @details, typeProblem = @typeProblem WHERE idP = @idP";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@idClient", idClient); // Corrected parameter name
+                command.Parameters.AddWithValue("@idClient", idClient); 
                 command.Parameters.AddWithValue("@idCat", idCat);
                 command.Parameters.AddWithValue("@marque", marque);
                 command.Parameters.AddWithValue("@status", status);
@@ -274,12 +278,17 @@ namespace Gestion_M
                 command.Parameters.AddWithValue("@details", details);
                 command.Parameters.AddWithValue("@prix", prix);
                 command.Parameters.AddWithValue("@typeProblem", typeProblem);
-                command.Parameters.AddWithValue("@idP", idP); // Added idP parameter
+                command.Parameters.AddWithValue("@idP", idP); 
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
                     Form1 existingForm1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
                     existingForm1?.AfficherDonneesProduit();
+                    Form1 ton = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    ton?.Refresh();
+                    Form1 ton1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    ton1?.AfficherDonneesProduitStatus();
+
                     AffNotification("Succes", "Enregistrement mis à jour avec succès !");
                     
 
