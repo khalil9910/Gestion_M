@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
+
+
 
 namespace Gestion_M
 {
@@ -18,6 +21,15 @@ namespace Gestion_M
         }
 
         private void Facture_Load(object sender, EventArgs e)
+        {
+
+        }
+        public void ShowReport(ReportDocument reportDocument)
+        {
+            crystalReportViewer2.ReportSource = reportDocument;
+        }
+
+        private void crystalReportViewer2_Load(object sender, EventArgs e)
         {
 
         }

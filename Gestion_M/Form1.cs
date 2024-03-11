@@ -883,44 +883,51 @@ namespace Gestion_M
 
         private void imprimer_Click(object sender, EventArgs e)
         {
-            Facture f = new Facture();
-            f.ShowDialog();
-
-            using (SqlConnection connection = db.GetConnection())
+            using (Facture f = new Facture())
             {
-               
-                if (maintenance.SelectedRows.Count > 0)
+                f.ShowDialog();
+
+                using (SqlConnection connection = db.GetConnection())
                 {
-                    int selectedRowIndex = maintenance.SelectedRows[0].Index;
-                    string idProduit = maintenance.Rows[selectedRowIndex].Cells["idP"].Value.ToString();
+                    if (maintenance.SelectedRows.Count > 0)
+                    {
+                        int selectedRowIndex = maintenance.SelectedRows[0].Index;
+                        string idProduit = maintenance.Rows[selectedRowIndex].Cells["idP"].Value.ToString();
 
-                    string query = "SELECT p.idP, p.marque, p.prix, c.nom AS Nom_Client " +
-                                   "FROM Produit p " +
-                                   "INNER JOIN Client c ON p.idClient = c.idClient " +
-                                   $"WHERE p.idP = {idProduit}";
+                        string query = "SELECT p.idP, p.marque, p.prix, c.nom AS Nom_Client " +
+                                       "FROM Produit p " +
+                                       "INNER JOIN Client c ON p.idClient = c.idClient " +
+                                       "WHERE p.idP = @idProduit";
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, "Produit");
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@idProduit", idProduit);
 
-                    FactutreClient cr = new FactutreClient();
-                    cr.SetDataSource(ds);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataSet ds = new DataSet();
+                        adapter.Fill(ds, "Produit");
 
-                    f.crystalReportViewer2.ReportSource = cr;
-                }
-                else
-                {
-                    MessageBox.Show("Please select a row in the DataGridView first.");
+                        if (ds.Tables["Produit"].Rows.Count > 0)
+                        {
+                            FactutreClient cr = new FactutreClient();
+                            cr.SetDataSource(ds);
+                            f.ShowReport(cr);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No client information found for the selected ID.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a row in the DataGridView first.");
+                    }
                 }
             }
         }
 
 
 
-
-
-
-
     }
 }
+
     
